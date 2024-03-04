@@ -9,7 +9,7 @@ var is_started :bool
 
 func init(sz :Vector2)->void:
 	size = sz
-	theme.default_font_size = sz.y /5
+	theme.default_font_size = sz.x /10
 
 func _process(delta: float) -> void:
 	if is_started :

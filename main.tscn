@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkgqqp0d68c5d"]
+[gd_scene load_steps=5 format=3 uid="uid://bkgqqp0d68c5d"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_isy8c"]
 [ext_resource type="PackedScene" uid="uid://c6cct2gj2a3im" path="res://timed_message/timed_message.tscn" id="2_x452l"]
-[ext_resource type="PackedScene" uid="uid://cnuti22mjwpd8" path="res://stopwatch/stopwatch.tscn" id="3_egx76"]
+
+[sub_resource type="SystemFont" id="SystemFont_bejao"]
+
+[sub_resource type="Theme" id="Theme_iy5mf"]
+resource_local_to_scene = true
+default_font = SubResource("SystemFont_bejao")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_isy8c")
 
 [node name="TimedMessage" parent="." instance=ExtResource("2_x452l")]
 visible = false
-
-[node name="Stopwatch" parent="." instance=ExtResource("3_egx76")]
+theme = SubResource("Theme_iy5mf")

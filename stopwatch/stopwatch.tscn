@@ -11,17 +11,20 @@ size_flags_vertical = 3
 theme = ExtResource("1_rrceb")
 script = ExtResource("1_gtvcd")
 
+[node name="ButtonReset" type="Button" parent="."]
+layout_mode = 2
+text = "Reset"
+
 [node name="LabelSec" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "00:00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonStart" type="Button" parent="."]
 layout_mode = 2
 text = "Start"
 
-[node name="ButtonReset" type="Button" parent="."]
-layout_mode = 2
-text = "Reset"
-
-[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="ButtonReset" to="." method="_on_button_reset_pressed"]
+[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]

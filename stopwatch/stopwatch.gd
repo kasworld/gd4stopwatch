@@ -14,7 +14,7 @@ func init(swsize :Vector2, n :int)->void:
 	size = swsize
 	custom_minimum_size = swsize
 	number = n
-	$ButtonSec.theme.default_font_size = size.x/4
+	$ButtonSec.theme.default_font_size = size.x/4.2
 
 func _process(delta: float) -> void:
 	if is_started :

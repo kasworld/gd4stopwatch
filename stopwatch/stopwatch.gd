@@ -2,14 +2,19 @@ extends Container
 
 class_name Stopwatch
 
+signal started(n:int)
+
 var start_tick :float
 var sum_tick :float
 var is_running :bool
 var is_started :bool
+var number :int
 
-func init(sz :Vector2)->void:
-	size = sz
-	$ButtonSec.theme.default_font_size = sz.x /4
+func init(swsize :Vector2, n :int)->void:
+	size = swsize
+	custom_minimum_size = swsize
+	number = n
+	$ButtonSec.theme.default_font_size = size.x/4
 
 func _process(delta: float) -> void:
 	if is_started :
@@ -41,6 +46,7 @@ func _on_button_sec_button_up() -> void:
 	else:
 		if not is_started:
 			is_started = true
+			started.emit(number)
 		if not is_running:
 			is_running = true
 			start_tick = Time.get_unix_time_from_system()

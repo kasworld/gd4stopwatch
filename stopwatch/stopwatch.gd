@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			dur = sum_tick + Time.get_unix_time_from_system() - start_tick
 		else : # paused
 			dur = sum_tick
-		$ButtonSec.text = "%02.0f:%02.0f.%02.0f" %[ dur/60.0 , dur as int % 60 , (dur - int(dur))*100 ]
+		$ButtonSec.text = "%02.0f:%02.0f.%02.0f" %[ dur as int / 60 , dur as int % 60 , clampi( (dur - int(dur))*100, 0,99) ]
 
 	else:
 		$ButtonSec.text = "00:00.00"

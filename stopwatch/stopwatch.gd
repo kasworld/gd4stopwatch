@@ -16,6 +16,23 @@ func init(swsize :Vector2, n :int)->void:
 	number = n
 	$ButtonSec.theme.default_font_size = size.x/4.2
 
+func dur2dict(dur:float)->Dictionary:
+	var ms = clampi( (dur - int(dur))*100, 0,99)
+	var sec = dur as int % 60
+	var min = dur as int / 60
+	var hour = min / 60
+	min -= hour * 60
+	return {
+		hour = hour,
+		min = min,
+		sec = sec,
+		ms = ms,
+	}
+func durdict2str(dd :Dictionary)->String:
+	if dd.hour == 0:
+		return "%02d:%02d.%02d" % [dd.min, dd.sec, dd.ms]
+	return "%d:%02d:%02d.%02d" % [dd.hour, dd.min, dd.sec, dd.ms]
+
 func _process(delta: float) -> void:
 	if is_started :
 		var dur :float
@@ -23,7 +40,7 @@ func _process(delta: float) -> void:
 			dur = sum_tick + Time.get_unix_time_from_system() - start_tick
 		else : # paused
 			dur = sum_tick
-		$ButtonSec.text = "%02.0f:%02.0f.%02.0f" %[ dur as int / 60 , dur as int % 60 , clampi( (dur - int(dur))*100, 0,99) ]
+		$ButtonSec.text = durdict2str(dur2dict(dur))
 
 	else:
 		$ButtonSec.text = "00:00.00"

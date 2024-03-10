@@ -11,7 +11,7 @@ func _ready() -> void:
 	$ScrollContainer.size = vp_rect.size
 	StopwatchContainer.size = vp_rect.size
 	var msgrect = Rect2( vp_rect.size.x * 0.0 ,vp_rect.size.y * 0.5 , vp_rect.size.x * 1.0 , vp_rect.size.y * 0.22 )
-	$TimedMessage.init(msgrect, tr("multi stopwatch 3.1.0"))
+	$TimedMessage.init(msgrect, tr("multi stopwatch 3.2.0"))
 	$TimedMessage.show_message("click time to start/stop, long press to reset ",1)
 	add_stopwatch()
 

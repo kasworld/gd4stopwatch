@@ -1,4 +1,4 @@
-extends Container
+extends PanelContainer
 
 class_name TimeRecorder
 
@@ -12,19 +12,18 @@ var is_inuse :bool
 var index :int
 var is_downward :bool # count down timer
 
-var formater :Callable
+var formater :Callable = default_formater
 func default_formater(v:float)->String:
 	return "%02.02f" % v
 
-func init(swsize :Vector2, idx :int, fmt :Callable=default_formater)->void:
-	size = swsize
-	custom_minimum_size = swsize
+func init(idx :int, fsize :int, fmt :Callable=default_formater)->void:
 	index = idx
 	formater = fmt
-	$ButtonSec.theme.default_font_size = size.x/4.2
+	theme.default_font_size = fsize
 
 func set_initial_sec(t :float)->void:
 	initial_sec = t
+	is_downward = true
 	reset()
 
 func reset() -> void:

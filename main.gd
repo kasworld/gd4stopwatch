@@ -11,13 +11,13 @@ func _ready() -> void:
 	$ScrollContainer.size = vp_rect.size
 	StopwatchContainer.size = vp_rect.size
 	var msgrect = Rect2( vp_rect.size.x * 0.0 ,vp_rect.size.y * 0.5 , vp_rect.size.x * 1.0 , vp_rect.size.y * 0.22 )
-	$TimedMessage.init(msgrect, tr("multi stopwatch 3.3.0"))
+	$TimedMessage.init(msgrect, tr("multi stopwatch 3.4.0"))
 	$TimedMessage.show_message("click time to start/stop, long press to reset ",1)
 	add_stopwatch()
 
 func add_stopwatch()->void:
 	var sw = tr_scene.instantiate()
-	sw.init( Vector2(vp_rect.size.x, vp_rect.size.y/6) , tr_list.size(),TickLib.tick2str )
+	sw.init(tr_list.size(),200, TickLib.tick2str )
 	sw.started.connect(recv_stopwatch_started)
 	StopwatchContainer.add_child(sw)
 	tr_list.append(sw)

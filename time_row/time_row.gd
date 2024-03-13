@@ -4,6 +4,14 @@ class_name TimeRow
 
 signal started(n:int) # emit when 1st start
 
+# ⌚  U+0231A  WATCH
+# ⌛  U+0231B  HOURGLASS
+# ⏰  U+023F0  ALARM CLOCK
+# ⏱  U+023F1  STOPWATCH
+# ⏲  U+023F2  TIMER CLOCK
+# ⏳  U+023F3  HOURGLASS WITH FLOWING SAND
+# ⧖  U+029D6  WHITE HOURGLASS
+# ⧗  U+029D7  BLACK HOURGLASS
 
 func init(idx :int, fsize :int)->void:
 	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
@@ -23,10 +31,10 @@ func _on_edit_value_changed()->void:
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		$ToggleButton.text = "countdown\ntimer"
+		$ToggleButton.text = "⏳"
 		$IntEdit.disable_buttons(false)
 	else:
-		$ToggleButton.text = "stopwatch"
+		$ToggleButton.text = "⏱"
 		$IntEdit.disable_buttons(true)
 		$TimeRecorder.set_stopwatch()
 		$IntEdit.set_init_value(0)

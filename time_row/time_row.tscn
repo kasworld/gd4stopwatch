@@ -18,7 +18,7 @@ script = ExtResource("1_avc1b")
 layout_mode = 2
 theme = SubResource("Theme_iyeqt")
 toggle_mode = true
-text = "stopwatch"
+text = "⏱"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

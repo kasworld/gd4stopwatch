@@ -18,7 +18,7 @@ func add_stopwatch()->void:
 	var sw = tr_scene.instantiate()
 	var n = tr_container.get_child_count()
 	tr_container.add_child(sw)
-	sw.init(n,100)
+	sw.init(n,80)
 	sw.started.connect(_on_tr_started)
 	await get_tree().process_frame
 	$ScrollContainer.ensure_control_visible(sw)

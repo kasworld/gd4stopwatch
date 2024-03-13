@@ -28,3 +28,5 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	else:
 		$ToggleButton.text = "stopwatch"
 		$IntEdit.disable_buttons(true)
+		$TimeRecorder.set_stopwatch()
+		$IntEdit.set_init_value(0)

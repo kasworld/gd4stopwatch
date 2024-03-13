@@ -18,7 +18,10 @@ var init_value :int
 var limit_low :int
 var use_limit_low :bool
 var current_value :int
-var formater :Callable
+
+var formater :Callable = default_formater
+func default_formater(v:int)->String:
+	return "%d" % v
 
 func _ready() -> void:
 	pass
@@ -47,8 +50,6 @@ func reset()->void:
 	current_value = init_value
 	update_label()
 
-func default_formater(v:int)->String:
-	return "%d" % v
 
 func update_label()->void:
 	vallabel.text = formater.call(current_value)

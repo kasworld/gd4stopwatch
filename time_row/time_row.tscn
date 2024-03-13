@@ -18,7 +18,11 @@ script = ExtResource("1_avc1b")
 layout_mode = 2
 theme = SubResource("Theme_iyeqt")
 toggle_mode = true
-text = "Stopwatch"
+text = "stopwatch"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
 layout_mode = 2

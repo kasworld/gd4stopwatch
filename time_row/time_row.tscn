@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkuwmw4kt6fd6"]
+
+[ext_resource type="Script" path="res://time_row/time_row.gd" id="1_avc1b"]
+[ext_resource type="PackedScene" uid="uid://dllxbmyyau3u5" path="res://int_edit/int_edit.tscn" id="2_egpa3"]
+[ext_resource type="PackedScene" uid="uid://cnuti22mjwpd8" path="res://time_recorder/time_recorder.tscn" id="3_pot11"]
+
+[node name="TimeRow" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_avc1b")
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 2
+
+[node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
+layout_mode = 2
+
+[node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]
+layout_mode = 2
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

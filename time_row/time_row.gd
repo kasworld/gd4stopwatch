@@ -14,13 +14,13 @@ signal started(n:int) # emit when 1st start
 # ⧗  U+029D7  BLACK HOURGLASS
 
 func init(idx :int, fsize :int)->void:
-	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
+	$ToggleButton.theme.default_font_size = fsize
 	$IntEdit.init(fsize, TickLib.tick2stri)
 	$IntEdit.set_limits( 0,true,0,99,false)
-	$TimeRecorder.started.connect(_on_tr_started)
-	$ToggleButton.theme.default_font_size = fsize/2
 	$IntEdit.value_changed.connect(_on_edit_value_changed)
 	$IntEdit.disable_buttons(true)
+	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
+	$TimeRecorder.started.connect(_on_tr_started)
 
 func _on_tr_started(n:int)->void:
 	started.emit(n)

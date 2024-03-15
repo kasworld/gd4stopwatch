@@ -25,6 +25,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
+visible = false
 layout_mode = 2
 
 [node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]

@@ -8,10 +8,11 @@ class_name IntEdit
 @onready var incbtn = $HBoxContainer/VBoxContainer/IncButton
 @onready var decbtn = $HBoxContainer/VBoxContainer/DecButton
 
-signal value_changed() # emit button up
-signal over_limit_low_reached() # emit when try dec on low limit value
-signal over_limit_high_reached() # emit when try inc on high limit value
+signal value_changed(idx:int) # emit button up
+signal over_limit_low_reached(idx:int) # emit when try dec on low limit value
+signal over_limit_high_reached(idx:int) # emit when try inc on high limit value
 
+var index :int
 var limit_high :int
 var use_limit_high :bool
 var init_value :int
@@ -23,7 +24,8 @@ var formater :Callable = default_formater
 func default_formater(v:int)->String:
 	return "%d" % v
 
-func init(fsize :int, fmt :Callable=default_formater)->void:
+func init(idx:int, fsize :int, fmt :Callable=default_formater)->void:
+	index = idx
 	$HBoxContainer/ValueLabel.theme.default_font_size = fsize
 	$HBoxContainer/VBoxContainer/IncButton.theme.default_font_size = fsize*0.9/2
 	$HBoxContainer/VBoxContainer/DecButton.theme.default_font_size = fsize*0.9/2
@@ -47,7 +49,6 @@ func reset()->void:
 	current_value = init_value
 	update_label()
 
-
 func update_label()->void:
 	vallabel.text = formater.call(current_value)
 
@@ -64,9 +65,9 @@ func inc(v :int)->void:
 	if use_limit_high:
 		if current_value >= limit_high:
 			current_value = limit_high
-			over_limit_high_reached.emit()
+			over_limit_high_reached.emit(index)
 	if current_value != oldval:
-		value_changed.emit()
+		value_changed.emit(index)
 		update_label()
 
 func dec(v :int)->void:
@@ -75,9 +76,9 @@ func dec(v :int)->void:
 	if use_limit_low:
 		if current_value <= limit_low:
 			current_value = limit_low
-			over_limit_low_reached.emit()
+			over_limit_low_reached.emit(index)
 	if current_value != oldval:
-		value_changed.emit()
+		value_changed.emit(index)
 		update_label()
 
 const click_inc_sec = 1

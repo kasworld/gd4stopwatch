@@ -13,28 +13,37 @@ signal started(n:int) # emit when 1st start
 # ⧖  U+029D6  WHITE HOURGLASS
 # ⧗  U+029D7  BLACK HOURGLASS
 
+var index :int
+
 func init(idx :int, fsize :int)->void:
+	index = idx
 	$ToggleButton.theme.default_font_size = fsize
-	$IntEdit.init(fsize, TickLib.tick2stri)
+	$IntEdit.init(idx, fsize, TickLib.tick2stri)
 	$IntEdit.set_limits( 0,true,0,99,false)
 	$IntEdit.value_changed.connect(_on_edit_value_changed)
-	$IntEdit.disable_buttons(true)
 	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
 	$TimeRecorder.started.connect(_on_tr_started)
+	mode_stopwatch()
 
-func _on_tr_started(n:int)->void:
+func _on_tr_started(n :int)->void:
 	started.emit(n)
 
-func _on_edit_value_changed()->void:
+func _on_edit_value_changed(n :int)->void:
 	var v = $IntEdit.get_value()
 	$TimeRecorder.set_initial_sec(v)
 
+func mode_stopwatch()->void:
+	$ToggleButton.text = "%d:⏱" % index
+	$TimeRecorder.set_stopwatch()
+	$IntEdit.visible = false
+
+func mode_countdowntimer()->void:
+	$ToggleButton.text = "%d:⏳" % index
+	$IntEdit.visible = true
+	$TimeRecorder.set_initial_sec($IntEdit.get_value())
+
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		$ToggleButton.text = "⏳"
-		$IntEdit.disable_buttons(false)
+		mode_countdowntimer()
 	else:
-		$ToggleButton.text = "⏱"
-		$IntEdit.disable_buttons(true)
-		$TimeRecorder.set_stopwatch()
-		$IntEdit.set_init_value(0)
+		mode_stopwatch()

@@ -6,12 +6,13 @@
 
 [sub_resource type="Theme" id="Theme_iyeqt"]
 
-[node name="TimeRow" type="HBoxContainer"]
+[node name="TimeRow" type="FlowContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 2
 script = ExtResource("1_avc1b")
 
 [node name="ToggleButton" type="Button" parent="."]
@@ -26,6 +27,9 @@ size_flags_horizontal = 3
 
 [node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
 visible = false
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
 
 [node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]

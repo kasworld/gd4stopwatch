@@ -1,10 +1,10 @@
 extends PanelContainer
 
-func init(rt :Rect2, ver :String)->void:
+func init(fsize :int, rt :Rect2, ver :String)->void:
 	position = rt.position
 	size = rt.size
 	$VBoxContainer/VersionLabel.text = ver
-	theme.default_font_size = rt.size.y /5
+	theme.default_font_size = fsize
 
 func show_message(msg :String, sec :float = 3)->void:
 	$VBoxContainer/Label.text = msg

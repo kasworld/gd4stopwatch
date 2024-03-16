@@ -25,14 +25,14 @@ text = "⏱"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
-visible = false
+[node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]
+[node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
+visible = false
 layout_mode = 2
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_check_button_toggled"]

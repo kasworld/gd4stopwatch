@@ -30,18 +30,17 @@ size_flags_horizontal = 3
 [node name="TimeRecorder" parent="." instance=ExtResource("3_pot11")]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 
-[node name="TimePresetMenu" type="MenuButton" parent="."]
-visible = false
+[node name="TimePresetMenu" type="MenuButton" parent="HBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_v1hve")
 text = "시간
 선택"
 
-[node name="IntEdit" parent="." instance=ExtResource("2_egpa3")]
-visible = false
+[node name="IntEdit" parent="HBoxContainer" instance=ExtResource("2_egpa3")]
 layout_mode = 2
 
 [connection signal="toggled" from="ToggleButton" to="." method="_on_check_button_toggled"]

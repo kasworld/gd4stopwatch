@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
+[audio]
+
+general/text_to_speech=true
+
 [display]
 
 window/size/viewport_width=1920

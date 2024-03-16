@@ -3,6 +3,7 @@ extends HBoxContainer
 class_name TimeRow
 
 signal started(n:int) # emit when 1st start
+signal ended(n:int) # emit when count down over 0
 
 # ⌚  U+0231A  WATCH
 # ⌛  U+0231B  HOURGLASS
@@ -23,10 +24,15 @@ func init(idx :int, fsize :int)->void:
 	$IntEdit.value_changed.connect(_on_edit_value_changed)
 	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
 	$TimeRecorder.started.connect(_on_tr_started)
+	$TimeRecorder.overrun.connect(_on_tr_overrun)
 	mode_stopwatch()
 
 func _on_tr_started(n :int)->void:
 	started.emit(n)
+
+func _on_tr_overrun(v:float)->void:
+	$TimeRecorder.reset()
+	ended.emit(index)
 
 func _on_edit_value_changed(n :int)->void:
 	var v = $IntEdit.get_value()

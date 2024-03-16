@@ -1,7 +1,11 @@
 extends Node2D
 
-var tr_scene = preload("res://time_row/time_row.tscn")
+var voices = DisplayServer.tts_get_voices_for_language(OS.get_locale_language())
+func text2speech(s :String):
+	DisplayServer.tts_stop()
+	DisplayServer.tts_speak(s, voices[0])
 
+var tr_scene = preload("res://time_row/time_row.tscn")
 @onready var tr_container = $ScrollContainer/VBoxContainer
 
 var vp_rect :Rect2
@@ -20,6 +24,7 @@ func add_stopwatch()->void:
 	tr_container.add_child(sw)
 	sw.init(n,180)
 	sw.started.connect(_on_tr_started)
+	sw.ended.connect(_on_tr_ended)
 	await get_tree().process_frame
 	$ScrollContainer.ensure_control_visible(sw)
 
@@ -27,3 +32,6 @@ func _on_tr_started(n:int)->void:
 	var tr_size = tr_container.get_child_count()
 	if n +1 == tr_size:
 		add_stopwatch()
+
+func _on_tr_ended(n:int)->void:
+	text2speech("%d번 타이머가 종료되었습니다." % n)

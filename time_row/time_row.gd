@@ -22,10 +22,16 @@ var timepreset_list = [
 	["15초", 15],
 	["30초", 30],
 	["1분", 1*60],
+	["2분", 2*60],
 	["3분", 3*60],
+	["4분", 4*60],
 	["5분", 5*60],
 	["10분", 10*60],
 	["15분", 15*60],
+	["20분", 20*60],
+	["30분", 30*60],
+	["45분", 45*60],
+	["1시간", 1*60*60],
 ]
 
 var index :int
@@ -33,9 +39,9 @@ var index :int
 func init(idx :int, fsize :int)->void:
 	index = idx
 	$ToggleButton.theme.default_font_size = fsize
-	intedit.init(idx, fsize, TickLib.tick2stri)
+	intedit.init(idx,"", fsize, TickLib.tick2stri)
 	intedit.set_limits( 0,true,0,99,false)
-	intedit.value_changed.connect(_on_edit_value_changed)
+	intedit.value_changing.connect(_on_edit_value_changed)
 	$TimeRecorder.init(idx,fsize, TickLib.tick2str)
 	$TimeRecorder.started.connect(_on_tr_started)
 	$TimeRecorder.overrun.connect(_on_tr_overrun)

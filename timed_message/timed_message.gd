@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal panel_hidden(s :String)
+
 func init(fsize :int, rt :Rect2, ver :String)->void:
 	position = rt.position
 	size = rt.size
@@ -13,3 +15,4 @@ func show_message(msg :String, sec :float = 3)->void:
 
 func _on_timer_timeout() -> void:
 	visible = false
+	panel_hidden.emit($VBoxContainer/Label.text)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dllxbmyyau3u5"]
 
-[ext_resource type="Script" uid="uid://cmdhfsg205oau" path="res://int_edit/int_edit.gd" id="1_pkisn"]
+[ext_resource type="Script" uid="uid://cpllvbje1uyaq" path="res://int_edit/int_edit.gd" id="1_pkisn"]
 
 [sub_resource type="Theme" id="Theme_sqvoa"]
 

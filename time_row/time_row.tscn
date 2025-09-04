@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkuwmw4kt6fd6"]
 
-[ext_resource type="Script" path="res://time_row/time_row.gd" id="1_avc1b"]
+[ext_resource type="Script" uid="uid://bp2ihkggafot7" path="res://time_row/time_row.gd" id="1_avc1b"]
 [ext_resource type="PackedScene" uid="uid://dllxbmyyau3u5" path="res://int_edit/int_edit.tscn" id="2_egpa3"]
 [ext_resource type="PackedScene" uid="uid://cnuti22mjwpd8" path="res://time_recorder/time_recorder.tscn" id="3_pot11"]
 

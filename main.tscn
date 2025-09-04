@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkgqqp0d68c5d"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_isy8c"]
+[ext_resource type="Script" uid="uid://bjwskqjeujj5b" path="res://main.gd" id="1_isy8c"]
 [ext_resource type="PackedScene" uid="uid://c6cct2gj2a3im" path="res://timed_message/timed_message.tscn" id="2_x452l"]
 
 [sub_resource type="SystemFont" id="SystemFont_bejao"]

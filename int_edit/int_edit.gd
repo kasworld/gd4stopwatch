@@ -34,6 +34,10 @@ func init(idx:int,lbtxt:String, fsize :int, fmt :Callable=default_formater)->Int
 	set_init_value(init_value)
 	return self
 
+func set_fsize(fsize :int) -> void:
+	theme.default_font_size = fsize
+	$VBoxContainer.theme.default_font_size = fsize*0.9/2
+
 func set_limits(llow :int, uselow :bool, val :int, lhigh :int, usehigh :bool)->IntEdit:
 	limit_low = llow
 	use_limit_low = uselow

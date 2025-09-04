@@ -32,6 +32,9 @@ var timepreset_list = [
 	["30분", 30*60],
 	["45분", 45*60],
 	["1시간", 1*60*60],
+	["2시간", 2*60*60],
+	["4시간", 4*60*60],
+	["100시간", 100*60*60],
 ]
 
 var index :int
@@ -51,6 +54,13 @@ func init(idx :int, fsize :int)->void:
 	time_preset_menu.get_popup().index_pressed.connect(_on_timepreset_menu_index_pressed)
 	make_preset_popup()
 	mode_stopwatch()
+
+func set_fsize(fsize :int) -> void:
+	$ToggleButton.theme.default_font_size = fsize
+	intedit.set_fsize(fsize)
+	$TimeRecorder.set_fsize(fsize)
+	time_preset_menu.theme.default_font_size = fsize/2.5
+	time_preset_menu.get_popup().theme.default_font_size = fsize/2.5
 
 func _on_tr_started(n :int)->void:
 	started.emit(n)

@@ -22,6 +22,9 @@ func init(idx :int, fsize :int, fmt :Callable=default_formater)->void:
 	formater = fmt
 	theme.default_font_size = fsize
 
+func set_fsize(fsize :int) -> void:
+	theme.default_font_size = fsize
+
 # set initial sec and count donw timer
 func set_initial_sec(t :float)->void:
 	initial_sec = t

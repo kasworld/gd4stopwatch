@@ -43,3 +43,17 @@ func _on_tr_ended(n:int)->void:
 	var msg = "%d번 타이머가 종료되었습니다." % n
 	text2speech(msg)
 	$TimedMessage.show_message(msg,3)
+
+var key2fn = {
+	KEY_ESCAPE:_on_button_esc_pressed,
+}
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		var fn = key2fn.get(event.keycode)
+		if fn != null:
+			fn.call()
+	elif event is InputEventMouseButton and event.is_pressed():
+		pass
+
+func _on_button_esc_pressed() -> void:
+	get_tree().quit()
